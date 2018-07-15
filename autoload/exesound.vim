@@ -200,12 +200,12 @@ function! exesound#play_se_in_theme(filename, volume, channel)
 	"   return
 	" endif
 	" call exesound#play_se(fn, volume, channel)
-  let fn = search_file(a:filename)
+  let fn = s:search_file(a:filename)
 	call exesound#play_se_file(fn, a:volume, a:channel)
 endfunc
 
 function! exesound#start_bgm_in_theme(filename, volume, channel)
-  let fn = search_file(a:filename)
+  let fn = s:search_file(a:filename)
 	call exesound#start_bgm_file(fn, a:volume, a:channel)
 endfunc
 
