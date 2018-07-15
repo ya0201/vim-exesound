@@ -18,25 +18,25 @@ let s:last_col = -1
 "----------------------------------------------------------------------
 " initialize
 "----------------------------------------------------------------------
-function! s:keysound_init(enable)
+function! s:exesound_init(enable)
 	if a:enable == 0
-		augroup KeysoundEvents
+		augroup ExesoundEvents
 			au!
 		augroup END
 	else
-		if keysound#init() != 1
-			call keysound#errmsg('ERROR: keysound init failed')
+		if exesound#init() != 1
+			call exesound#errmsg('ERROR: exesound init failed')
 			return
 		endif
 		if exists('#TextChangedP') || exists('##TextChangedP')
-			augroup KeysoundEvents
+			augroup ExesoundEvents
 				au! 
 				au InsertEnter * call s:event_insert_enter()
 				au TextChangedI * call s:event_text_changed()
 				au TextChangedP * call s:event_text_changed()
 			augroup END
 		else
-			augroup KeysoundEvents
+			augroup ExesoundEvents
 				au! 
 				au InsertEnter * call s:event_insert_enter()
 				au TextChangedI * call s:event_text_changed()
@@ -54,19 +54,19 @@ function! s:event_text_changed()
 	let cur_row = line('.')
 	let cur_col = col('.')
 	if cur_row == s:last_row && cur_col != s:last_col
-		call keysound#play_se_in_theme('keyany.wav')
+		call exesound#play_se_in_theme('keyany.wav')
 	elseif cur_row > s:last_row && cur_col <= s:last_col
-		call keysound#play_se_in_theme("keyenter.wav")
+		call exesound#play_se_in_theme("keyenter.wav")
 	elseif cur_row < s:last_row
-		call keysound#play_se_in_theme("keyany.wav")
+		call exesound#play_se_in_theme("keyany.wav")
 	endif
 	let s:last_row = cur_row
 	let s:last_col = cur_col
 endfunc
 
 function! s:event_vim_enter()
-	if get(g:, 'keysound_enable', 0) != 0
-		call s:keysound_init(1)
+	if get(g:, 'exesound_enable', 0) != 0
+		call s:exesound_init(1)
 	endif
 endfunc
 
@@ -74,7 +74,7 @@ endfunc
 "----------------------------------------------------------------------
 " VimEnter
 "----------------------------------------------------------------------
-augroup KeysoundEnterEvent
+augroup ExesoundEnterEvent
 	au!
 	au VimEnter * call s:event_vim_enter()
 augroup END
@@ -83,6 +83,6 @@ augroup END
 "----------------------------------------------------------------------
 " commands
 "----------------------------------------------------------------------
-command! -nargs=0 KeysoundEnable call s:keysound_init(1)
-command! -nargs=0 KeysoundDisable call s:keysound_init(0)
+command! -nargs=0 ExesoundEnable call s:exesound_init(1)
+command! -nargs=0 ExesoundDisable call s:exesound_init(0)
 
