@@ -54,11 +54,11 @@ function! s:event_text_changed()
 	let cur_row = line('.')
 	let cur_col = col('.')
 	if cur_row == s:last_row && cur_col != s:last_col
-		call exesound#play_se_in_theme('keyany.wav')
+		call exesound#play_se_in_theme('keyany.wav', 450, -1)
 	elseif cur_row > s:last_row && cur_col <= s:last_col
-		call exesound#play_se_in_theme("keyenter.wav")
+		call exesound#play_se_in_theme("keyenter.wav", 450, -1)
 	elseif cur_row < s:last_row
-		call exesound#play_se_in_theme("keyany.wav")
+		call exesound#play_se_in_theme("keyany.wav", 450, -1)
 	endif
 	let s:last_row = cur_row
 	let s:last_col = cur_col
