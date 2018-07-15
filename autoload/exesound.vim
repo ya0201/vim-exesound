@@ -227,7 +227,7 @@ function! exesound#init() abort
 	if s:init() == 0
 		return 0
 	endif
-	call s:python('exesound.playsound("")')
+	call s:python('exesound.play_se("")')
 	return 1
 endfunc
 
