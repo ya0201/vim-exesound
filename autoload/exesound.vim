@@ -122,23 +122,26 @@ endfunc
 " play a sound
 "----------------------------------------------------------------------
 function! exesound#play_se_file(filepath, volume, channel)
-	" let s:filepath = a:filepath
-	" let s:volume = a:volume
-	" let s:channel = a:channel
+  let s:filepath = a:filepath
+  let s:volume = a:volume
+  let s:channel = a:channel
 	call s:init()
 	" call s:python('v = int(vim.eval("s:volume")) * 0.001')
 	" call s:python('c = int(vim.eval("s:channel"))')
 	" call s:python('exesound.play_se(vim.eval("s:filepath"), v, c)')
-	call s:python('v = int(vim.eval("a:volume")) * 0.001')
-	call s:python('c = int(vim.eval("a:channel"))')
-	call s:python('exesound.play_se(vim.eval("a:filepath"), v, c)')
+	call s:python('v = int(vim.eval("s:volume")) * 0.001')
+	call s:python('c = int(vim.eval("s:channel"))')
+	call s:python('exesound.play_se(vim.eval("s:filepath"), v, c)')
 endfunc
 
 function! exesound#start_bgm_file(filepath, volume, channel)
+  let s:filepath = a:filepath
+  let s:volume = a:volume
+  let s:channel = a:channel
 	call s:init()
-	call s:python('v = int(vim.eval("a:volume")) * 0.001')
-	call s:python('c = int(vim.eval("a:channel"))')
-	call s:python('exesound.start_bgm(vim.eval("a:filepath"), v, c)')
+	call s:python('v = int(vim.eval("s:volume")) * 0.001')
+	call s:python('c = int(vim.eval("s:channel"))')
+	call s:python('exesound.start_bgm(vim.eval("s:filepath"), v, c)')
 endfunc
 
 
