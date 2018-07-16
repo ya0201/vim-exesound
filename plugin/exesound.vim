@@ -29,7 +29,7 @@ function! s:exesound_init(enable)
 			return
 		endif
     " 戦闘開始se, bgm再生
-    exesound#start_bgm_in_theme('bgm.wav', 450, -1)
+    call exesound#start_bgm_in_theme('bgm.wav', 450, -1)
 		if exists('#TextChangedP') || exists('##TextChangedP')
 			augroup ExesoundEvents
 				au! 
