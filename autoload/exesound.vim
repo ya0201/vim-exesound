@@ -27,6 +27,10 @@ if !exists('g:exesound_volume')
 	let g:exesound_volume = 450
 endif
 
+if !exists('g:exesound_auto_nt_open')
+	let g:exesound_auto_nt_open = 1
+endif
+
 
 "----------------------------------------------------------------------
 " tools
