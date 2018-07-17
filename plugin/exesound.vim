@@ -123,8 +123,8 @@ endfunc
 
 function! s:event_buf_enter()
   if !exists('g:exesound_auto_focus_on_nt')
-    " let g:exesound_auto_focus_on_nt = 0
-    let g:exesound_auto_focus_on_nt = 1 " debug setting
+    let g:exesound_auto_focus_on_nt = 0
+    " let g:exesound_auto_focus_on_nt = 1 " debug setting
   endif
   if !exists('s:was_nt_opened')
     let s:was_nt_opened = 0
